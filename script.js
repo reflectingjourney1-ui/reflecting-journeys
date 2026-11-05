@@ -231,6 +231,11 @@
       .catch(function () { /* inline defaults stay */ });
   }
 
+  /* ---------- Contact form: return to this site's thank-you page ---------- */
+  doc.querySelectorAll('[data-contact-form] [data-redirect]').forEach(function (el) {
+    el.value = location.origin + '/thanks';
+  });
+
   /* ---------- Current year ---------- */
   doc.querySelectorAll('[data-year]').forEach(function (el) { el.textContent = String(new Date().getFullYear()); });
 

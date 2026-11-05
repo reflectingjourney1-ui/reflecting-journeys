@@ -7,7 +7,26 @@
   <title>Site Admin — Reflecting Journeys</title>
 </head>
 <body>
+  <script>window.CMS_MANUAL_INIT = true;</script>
   <!-- Decap CMS renders the full admin UI here -->
   <script src="https://unpkg.com/decap-cms@3.17.3/dist/decap-cms.js"></script>
+  <script>
+    // Settings come from config.yml. Login: on *.netlify.app, Netlify's built-in
+    // GitHub login; anywhere else (Cloudflare Pages, the custom domain) the site's
+    // own login at /api/auth (see functions/api/).
+    var host = location.hostname;
+    var useOwnLogin = !/\.netlify\.app$/.test(host) && host !== 'localhost' && host !== '127.0.0.1';
+    CMS.init(useOwnLogin ? {
+      config: {
+        backend: {
+          name: 'github',
+          repo: 'reflectingjourney1-ui/reflecting-journeys',
+          branch: 'main',
+          base_url: location.origin,
+          auth_endpoint: 'api/auth'
+        }
+      }
+    } : {});
+  </script>
 </body>
 </html>
