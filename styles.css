@@ -1736,3 +1736,12 @@ a.contact-list__value:hover { color: var(--accent-warm); }
   .contact-visuals .map-frame { height: clamp(420px, 42vw, 560px); }
   .contact-visuals .map-badge { left: 1.5rem; bottom: 1.5rem; }
 }
+
+/* Long testimonials: a calmer reading size with left-aligned paragraphs.
+   (Short ones keep the large centred quote.) */
+.testimonial--long { max-width: 40rem; text-align: left; }
+.testimonial--long .testimonial__quote {
+  font-family: var(--font-body); font-size: clamp(0.98rem, 0.9rem + 0.35vw, 1.1rem);
+  line-height: 1.75; color: var(--text-on-dark-soft);
+}
+.testimonial--long .testimonial__by { align-items: flex-start; }

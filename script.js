@@ -219,10 +219,10 @@
         if (track && Array.isArray(data.testimonials) && data.testimonials.length) {
           track.innerHTML = data.testimonials.map(function (t, i) {
             return '<li class="carousel__slide" role="group" aria-roledescription="slide" aria-label="' + (i + 1) + ' of ' + data.testimonials.length + '">' +
-              '<figure class="testimonial">' +
+              '<figure class="testimonial' + (String(t.quote).length > 500 ? ' testimonial--long' : '') + '">' +
               '<blockquote class="testimonial__quote font-display">' + md(t.quote) + '</blockquote>' +
               '<figcaption class="testimonial__by">' +
-              '<span class="testimonial__initials">' + esc(t.initials) + '</span>' +
+              (t.initials ? '<span class="testimonial__initials">' + esc(t.initials) + '</span>' : '') +
               '<span class="testimonial__role">' + esc(t.role) + '</span>' +
               '</figcaption></figure></li>';
           }).join('');

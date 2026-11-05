@@ -126,5 +126,5 @@ collections:
             summary: "{{fields.initials}} — {{fields.role}}"
             fields:
               - { label: "The quote", name: "quote", widget: "text" }
-              - { label: "Initials / name", name: "initials", widget: "string", hint: "e.g. M.A." }
+              - { label: "Initials / name (optional)", name: "initials", widget: "string", required: false, hint: "e.g. M.A. — leave empty to show no name" }
               - { label: "Who they are", name: "role", widget: "string", hint: "e.g. Coaching & Reiki client" }
