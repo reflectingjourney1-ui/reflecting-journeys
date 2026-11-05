@@ -1,0 +1,130 @@
+# Login: Laura signs in with her GitHub account (Netlify provides the GitHub login).
+# REPO is set during handover to her GitHub repository.
+backend:
+  name: github
+  repo: reflectingjourney1-ui/reflecting-journeys
+  branch: main
+
+# Lets the panel be tested on a local computer (ignored on the live site).
+local_backend: true
+
+media_folder: "images/uploads"
+public_folder: "images/uploads"
+
+site_url: /
+display_url: /
+
+collections:
+  - name: "site"
+    label: "✏️ Edit My Website"
+    description: "Pick a section, change the text, then press the green Publish button at the top. Your website updates in about a minute."
+    editor:
+      preview: false
+    files:
+      - name: "content"
+        label: "Website Content"
+        file: "content/site.json"
+        fields:
+          # --------------------------------------------------------
+          - label: "① Contact & Links"
+            name: "contact"
+            widget: "object"
+            collapsed: true
+            hint: "These appear in the footer of every page and on the Contact page."
+            fields:
+              - { label: "Email address", name: "email", widget: "string" }
+              - { label: "WhatsApp number (shown)", name: "whatsapp_display", widget: "string", hint: "e.g. +961 76 560 093" }
+              - { label: "WhatsApp link", name: "whatsapp_url", widget: "string", hint: "e.g. https://wa.me/96176560093 (number with no spaces or +)" }
+              - { label: "Instagram (shown)", name: "instagram_handle", widget: "string", hint: "With the @, e.g. @reflecting_journeyss" }
+              - { label: "Instagram link", name: "instagram_url", widget: "string" }
+              - { label: "Location line", name: "location", widget: "string" }
+          # --------------------------------------------------------
+          - label: "② Footer"
+            name: "footer"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Short footer tagline", name: "tagline", widget: "text", hint: "Two short lines." }
+          # --------------------------------------------------------
+          - label: "③ Home page"
+            name: "home"
+            widget: "object"
+            collapsed: true
+            hint: "Tip: put *stars* around a word for elegant italics, or **two stars** for bold."
+            fields:
+              - { label: "Small line above the big title", name: "hero_eyebrow", widget: "string" }
+              - { label: "Sentence under the big title", name: "hero_lead", widget: "text" }
+              - { label: "Meet Laura — paragraph 1", name: "meet_p1", widget: "text" }
+              - { label: "Meet Laura — paragraph 2", name: "meet_p2", widget: "text" }
+              - { label: "Why Energy Therapy — paragraph 1", name: "why_p1", widget: "text" }
+          # --------------------------------------------------------
+          - label: "④ Services (short descriptions)"
+            name: "services"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Coaching — short description (home)", name: "coaching_desc", widget: "text" }
+              - { label: "Human Design — short description (home)", name: "human_design_desc", widget: "text" }
+              - { label: "Reiki — short description (home)", name: "reiki_desc", widget: "text" }
+              - { label: "Coaching — page intro line", name: "coaching_lead", widget: "text" }
+              - { label: "Human Design — page intro line", name: "human_design_lead", widget: "text" }
+              - { label: "Reiki — page intro line", name: "reiki_lead", widget: "text" }
+          # --------------------------------------------------------
+          - label: "⑤ About page"
+            name: "about"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Intro line (under the title)", name: "lead", widget: "text" }
+              - { label: "Story paragraph 1", name: "story_p1", widget: "text" }
+              - { label: "Story paragraph 2", name: "story_p2", widget: "text" }
+              - { label: "Story paragraph 3", name: "story_p3", widget: "text" }
+              - { label: "Story paragraph 4", name: "story_p4", widget: "text" }
+          # --------------------------------------------------------
+          - label: "⑥ ‘Book a call’ section"
+            name: "cta"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Sentence", name: "lead", widget: "text" }
+              - { label: "Button text", name: "button", widget: "string" }
+          # --------------------------------------------------------
+          - label: "⑧ Website Images"
+            name: "images"
+            widget: "object"
+            collapsed: true
+            hint: "For each image you can upload a new file or choose an existing one, then Publish. The logo is not editable here."
+            fields:
+              - label: "Home page"
+                name: "home"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - { label: "Hero image (top of home page)", name: "hero", widget: "image", required: false, media_library: { config: { multiple: false } } }
+                  - { label: "Meet Laura image", name: "meet", widget: "image", required: false }
+              - label: "Service page hero images (Coaching / Human Design / Reiki)"
+                name: "services"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - { label: "Coaching image", name: "coaching", widget: "image", required: false }
+                  - { label: "Human Design image", name: "human_design", widget: "image", required: false }
+                  - { label: "Reiki image", name: "reiki", widget: "image", required: false }
+              - label: "About page"
+                name: "about"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - { label: "About — main image", name: "main", widget: "image", required: false }
+          # --------------------------------------------------------
+          - label: "⑦ Testimonials (the carousel)"
+            name: "testimonials"
+            widget: "list"
+            collapsed: true
+            label_singular: "Testimonial"
+            summary: "{{fields.initials}} — {{fields.role}}"
+            fields:
+              - { label: "The quote", name: "quote", widget: "text" }
+              - { label: "Initials / name", name: "initials", widget: "string", hint: "e.g. M.A." }
+              - { label: "Who they are", name: "role", widget: "string", hint: "e.g. Coaching & Reiki client" }
