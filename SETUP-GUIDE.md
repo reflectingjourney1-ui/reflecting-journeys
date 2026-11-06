@@ -51,3 +51,11 @@ address with the new one in all of them, then publish.
 Content images have pre-sized WebP copies in `images/resp/`
 (480/720/960 px wide) referenced by `srcset`. A new photo chosen in the admin
 panel replaces the page image directly (full size, no copies).
+
+## Why the repository is public
+
+The site is hosted on a free Netlify team. On free plans Netlify only publishes
+changes to a *private* repository when they come from the team's own Git
+account; a *public* repository has no such limit. Keeping the repository public
+lets every edit made in the admin panel go live. It contains no passwords or
+keys (the admin-login secret is stored only in Netlify).
