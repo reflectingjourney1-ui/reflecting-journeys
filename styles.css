@@ -1784,14 +1784,12 @@ a.contact-list__value:hover { color: var(--accent-warm); }
   .contact-visuals .map-badge { left: 1.5rem; bottom: 1.5rem; }
 }
 
-/* Long testimonials: a calmer reading size with left-aligned paragraphs.
-   (Short ones keep the large centred quote.) */
-.testimonial--long { max-width: 40rem; text-align: left; }
+/* Longer testimonials: same centred quote style as the short ones, just a
+   slightly smaller size so they don't fill the whole screen. */
 .testimonial--long .testimonial__quote {
-  font-family: var(--font-body); font-size: clamp(0.98rem, 0.9rem + 0.35vw, 1.1rem);
-  line-height: 1.75; color: var(--text-on-dark-soft);
+  font-size: clamp(1.1rem, 0.95rem + 0.9vw, 1.45rem);
+  line-height: 1.55;
 }
-.testimonial--long .testimonial__by { align-items: flex-start; }
 
 /* Services dropdown: an invisible bridge over the gap between "Services" and the
    menu, so moving the mouse down into the menu doesn't close it. */
