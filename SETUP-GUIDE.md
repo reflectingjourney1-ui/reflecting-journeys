@@ -70,3 +70,7 @@ keys (the admin-login secret is stored only in Netlify).
   for returning visitors — give new photos a new file name.
 - The home page **preloads its top photo** (`index.html` head). If that photo is
   changed in the admin panel, update the preload line to match.
+- The admin panel's photo library shows everything in `images/uploads/`, so
+  only photos in use are kept there. Unused photos are kept in `images/archive/`
+  (e.g. the Reiki photo crop and the old home-page photo) — move one back into
+  `images/uploads/` to make it available in the admin panel again.
