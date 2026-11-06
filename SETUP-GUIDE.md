@@ -14,8 +14,8 @@ Running cost: **$0**. The only paid item is the domain name.
   files; `script.js` reads them when a page loads.
 - **Photos uploaded in the admin panel** go to `images/uploads/`.
 - **Contact form** messages are sent by **Web3Forms** (free) straight to
-  reflectingjourney1@gmail.com. The form's access key is in `contact.html`;
-  manage it at web3forms.com (log in with that Gmail). If the site moves to a
+  laura@reflectingjourneys.com (Outlook). The form's access key is in `contact.html`;
+  manage it at web3forms.com (log in with that address). If the site moves to a
   new domain, add it in the form's settings there.
 
 ## Admin panel login (GitHub)
