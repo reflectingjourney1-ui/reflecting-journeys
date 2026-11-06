@@ -59,3 +59,14 @@ changes to a *private* repository when they come from the team's own Git
 account; a *public* repository has no such limit. Keeping the repository public
 lets every edit made in the admin panel go live. It contains no passwords or
 keys (the admin-login secret is stored only in Netlify).
+
+## Speed settings
+
+- **Fonts** are self-hosted in `/fonts` (no Google Fonts requests).
+- **Browser caching** is set in `_headers`: fonts and `images/resp/` are kept
+  for a year, brand images for 30 days, admin-panel photos for 7 days. Pages,
+  CSS, JS and `content/` are always re-checked, so edits show immediately.
+  A photo replaced with **the same file name** may take up to 7 days to update
+  for returning visitors — give new photos a new file name.
+- The home page **preloads its top photo** (`index.html` head). If that photo is
+  changed in the admin panel, update the preload line to match.
