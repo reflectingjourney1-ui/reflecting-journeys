@@ -1,0 +1,16 @@
+{
+  "images": {
+    "home": {
+      "hero": "images/uploads/laura-trees-full.webp",
+      "meet": "images/uploads/laura-about.jpg"
+    },
+    "services": {
+      "coaching": "images/uploads/laura-studio.jpg",
+      "human_design": "images/uploads/laura-journey.jpg",
+      "reiki": "images/uploads/laura-hero.jpg"
+    },
+    "about": {
+      "main": "images/uploads/laura-nature.jpg"
+    }
+  }
+}

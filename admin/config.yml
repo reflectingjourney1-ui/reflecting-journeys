@@ -1,5 +1,5 @@
+# Admin panel (Decap CMS) for Reflecting Journeys.
 # Login: Laura signs in with her GitHub account (Netlify provides the GitHub login).
-# REPO is set during handover to her GitHub repository.
 backend:
   name: github
   repo: reflectingjourney1-ui/reflecting-journeys
@@ -8,123 +8,263 @@ backend:
 # Lets the panel be tested on a local computer (ignored on the live site).
 local_backend: true
 
-media_folder: "images/uploads"
-public_folder: "images/uploads"
-
+logo_url: /images/icons/icon-512.png
 site_url: /
 display_url: /
 
+media_folder: images/uploads
+public_folder: images/uploads
+
+# One menu item per section; each edits its own file in content/ (read by script.js).
 collections:
-  - name: "site"
-    label: "✏️ Edit My Website"
-    description: "Pick a section, change the text, then press the green Publish button at the top. Your website updates in about a minute."
+  - name: contact
+    label: 📞 Contact details
+    description: Change the words or photos, then click "Publish" at the top and choose "Publish now". The website updates by itself in about a minute.
     editor:
       preview: false
     files:
-      - name: "content"
-        label: "Website Content"
-        file: "content/site.json"
+      - name: contact
+        label: ✏️ Click here to edit
+        file: content/contact.json
         fields:
-          # --------------------------------------------------------
-          - label: "① Contact & Links"
-            name: "contact"
-            widget: "object"
-            collapsed: true
-            hint: "These appear in the footer of every page and on the Contact page."
+          - label: How people reach you
+            name: contact
+            widget: object
+            hint: Shown on the Contact page and at the bottom of every page.
             fields:
-              - { label: "Email address", name: "email", widget: "string" }
-              - { label: "WhatsApp number (shown)", name: "whatsapp_display", widget: "string", hint: "e.g. +961 76 560 093" }
-              - { label: "WhatsApp link", name: "whatsapp_url", widget: "string", hint: "e.g. https://wa.me/96176560093 (number with no spaces or +)" }
-              - { label: "Instagram (shown)", name: "instagram_handle", widget: "string", hint: "With the @, e.g. @reflecting_journeyss" }
-              - { label: "Instagram link", name: "instagram_url", widget: "string" }
-              - { label: "Location line", name: "location", widget: "string" }
-          # --------------------------------------------------------
-          - label: "② Footer"
-            name: "footer"
-            widget: "object"
-            collapsed: true
+              - label: Email address
+                name: email
+                widget: string
+              - label: WhatsApp number (as people will see it)
+                name: whatsapp_display
+                widget: string
+                hint: 'For example: +961 76 560 093'
+              - label: WhatsApp link
+                name: whatsapp_url
+                widget: string
+                hint: 'https://wa.me/ followed by the number with no spaces and no +  (for example: https://wa.me/96176560093)'
+              - label: Instagram name (as people will see it)
+                name: instagram_handle
+                widget: string
+                hint: 'With the @, for example: @reflecting_journeyss'
+              - label: Instagram link
+                name: instagram_url
+                widget: string
+                hint: 'For example: https://instagram.com/reflecting_journeyss'
+              - label: Location
+                name: location
+                widget: string
+                hint: 'For example: Beirut, Lebanon · Online worldwide'
+          - label: Bottom of every page
+            name: footer
+            widget: object
             fields:
-              - { label: "Short footer tagline", name: "tagline", widget: "text", hint: "Two short lines." }
-          # --------------------------------------------------------
-          - label: "③ Home page"
-            name: "home"
-            widget: "object"
-            collapsed: true
-            hint: "Tip: put *stars* around a word for elegant italics, or **two stars** for bold."
+              - label: Short tagline under the logo
+                name: tagline
+                widget: text
+                hint: Press Enter to start a new line.
+  - name: home
+    label: 🏠 Home page
+    description: Change the words or photos, then click "Publish" at the top and choose "Publish now". The website updates by itself in about a minute.
+    editor:
+      preview: false
+    files:
+      - name: home
+        label: ✏️ Click here to edit
+        file: content/home.json
+        fields:
+          - label: Home page texts
+            name: home
+            widget: object
+            hint: 'Tip: put *one star* around words for italics, or **two stars** for bold.'
             fields:
-              - { label: "Small line above the big title", name: "hero_eyebrow", widget: "string" }
-              - { label: "Sentence under the big title", name: "hero_lead", widget: "text" }
-              - { label: "Meet Laura — paragraph 1", name: "meet_p1", widget: "text" }
-              - { label: "Meet Laura — paragraph 2", name: "meet_p2", widget: "text" }
-              - { label: "Why Energy Therapy — paragraph 1", name: "why_p1", widget: "text" }
-          # --------------------------------------------------------
-          - label: "④ Services (short descriptions)"
-            name: "services"
-            widget: "object"
-            collapsed: true
+              - label: Small line above the big title
+                name: hero_eyebrow
+                widget: string
+                hint: The small capital letters at the very top, e.g. Coaching · Human Design · Reiki
+              - label: Short line under the big title
+                name: hero_lead
+                widget: string
+                hint: The gold line just above the button, e.g. I See You
+              - label: Meet Laura — first paragraph
+                name: meet_p1
+                widget: text
+              - label: Meet Laura — second paragraph
+                name: meet_p2
+                widget: text
+              - label: “Why this approach” paragraph
+                name: why_p1
+                widget: text
+  - name: services
+    label: 🧭 Services descriptions
+    description: Change the words or photos, then click "Publish" at the top and choose "Publish now". The website updates by itself in about a minute.
+    editor:
+      preview: false
+    files:
+      - name: services
+        label: ✏️ Click here to edit
+        file: content/services.json
+        fields:
+          - label: Services
+            name: services
+            widget: object
             fields:
-              - { label: "Coaching — short description (home)", name: "coaching_desc", widget: "text" }
-              - { label: "Human Design — short description (home)", name: "human_design_desc", widget: "text" }
-              - { label: "Reiki — short description (home)", name: "reiki_desc", widget: "text" }
-              - { label: "Coaching — page intro line", name: "coaching_lead", widget: "text" }
-              - { label: "Human Design — page intro line", name: "human_design_lead", widget: "text" }
-              - { label: "Reiki — page intro line", name: "reiki_lead", widget: "text" }
-          # --------------------------------------------------------
-          - label: "⑤ About page"
-            name: "about"
-            widget: "object"
-            collapsed: true
+              - label: Coaching — short text on the home page card
+                name: coaching_desc
+                widget: text
+              - label: Human Design — short text on the home page card
+                name: human_design_desc
+                widget: text
+              - label: Reiki — short text on the home page card
+                name: reiki_desc
+                widget: text
+              - label: Coaching page — sentence under the title
+                name: coaching_lead
+                widget: text
+              - label: Human Design page — sentence under the title
+                name: human_design_lead
+                widget: text
+              - label: Reiki page — sentence under the title
+                name: reiki_lead
+                widget: text
+  - name: about
+    label: 🌿 About page
+    description: Change the words or photos, then click "Publish" at the top and choose "Publish now". The website updates by itself in about a minute.
+    editor:
+      preview: false
+    files:
+      - name: about
+        label: ✏️ Click here to edit
+        file: content/about.json
+        fields:
+          - label: About page texts
+            name: about
+            widget: object
+            hint: 'Tip: put **two stars** around words for bold.'
             fields:
-              - { label: "Intro line (under the title)", name: "lead", widget: "text" }
-              - { label: "Story paragraph 1", name: "story_p1", widget: "text" }
-              - { label: "Story paragraph 2", name: "story_p2", widget: "text" }
-              - { label: "Story paragraph 3", name: "story_p3", widget: "text" }
-              - { label: "Story paragraph 4", name: "story_p4", widget: "text" }
-          # --------------------------------------------------------
-          - label: "⑥ ‘Book a call’ section"
-            name: "cta"
-            widget: "object"
-            collapsed: true
+              - label: Sentence under your name
+                name: lead
+                widget: text
+              - label: Your story — paragraph 1
+                name: story_p1
+                widget: text
+              - label: Your story — paragraph 2
+                name: story_p2
+                widget: text
+              - label: Your story — paragraph 3
+                name: story_p3
+                widget: text
+              - label: Your story — paragraph 4
+                name: story_p4
+                widget: text
+  - name: testimonials
+    label: 💬 Testimonials
+    description: Change the words or photos, then click "Publish" at the top and choose "Publish now". The website updates by itself in about a minute.
+    editor:
+      preview: false
+    files:
+      - name: testimonials
+        label: ✏️ Click here to edit
+        file: content/testimonials.json
+        fields:
+          - label: Testimonials
+            name: testimonials
+            widget: list
+            label_singular: testimonial
+            summary: '{{fields.role}} {{fields.initials}}'
+            hint: Shown on the home page. Use “Add testimonial” for a new one; drag to change the order.
             fields:
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Sentence", name: "lead", widget: "text" }
-              - { label: "Button text", name: "button", widget: "string" }
-          # --------------------------------------------------------
-          - label: "⑧ Website Images"
-            name: "images"
-            widget: "object"
-            collapsed: true
-            hint: "For each image you can upload a new file or choose an existing one, then Publish. The logo is not editable here."
+              - label: What they said
+                name: quote
+                widget: text
+                hint: Leave an empty line between paragraphs.
+              - label: Initials or name (optional)
+                name: initials
+                widget: string
+                required: false
+                hint: 'For example: M.A. — leave empty to show no name.'
+              - label: Who they are
+                name: role
+                widget: string
+                hint: 'For example: Energy Therapy Client'
+  - name: cta
+    label: 📅 “Book a call” box
+    description: Change the words or photos, then click "Publish" at the top and choose "Publish now". The website updates by itself in about a minute.
+    editor:
+      preview: false
+    files:
+      - name: cta
+        label: ✏️ Click here to edit
+        file: content/cta.json
+        fields:
+          - label: The green box at the bottom of every page
+            name: cta
+            widget: object
             fields:
-              - label: "Home page"
-                name: "home"
-                widget: "object"
-                collapsed: true
+              - label: Title
+                name: title
+                widget: string
+              - label: Text
+                name: lead
+                widget: text
+                hint: Leave an empty line to start a new paragraph.
+              - label: Button text
+                name: button
+                widget: string
+  - name: photos
+    label: 🖼️ Photos
+    description: Change the words or photos, then click "Publish" at the top and choose "Publish now". The website updates by itself in about a minute.
+    editor:
+      preview: false
+    files:
+      - name: photos
+        label: ✏️ Click here to edit
+        file: content/photos.json
+        fields:
+          - label: Photos
+            name: images
+            widget: object
+            hint: 'To change a photo: click “Choose different image”, upload a new one, then Publish. Portrait (upright) photos work best.'
+            fields:
+              - label: Home page
+                name: home
+                widget: object
                 fields:
-                  - { label: "Hero image (top of home page)", name: "hero", widget: "image", required: false, media_library: { config: { multiple: false } } }
-                  - { label: "Meet Laura image", name: "meet", widget: "image", required: false }
-              - label: "Service page hero images (Coaching / Human Design / Reiki)"
-                name: "services"
-                widget: "object"
-                collapsed: true
+                  - label: Big photo at the top
+                    name: hero
+                    widget: image
+                    required: false
+                    choose_url: false
+                  - label: Meet Laura photo
+                    name: meet
+                    widget: image
+                    required: false
+                    choose_url: false
+              - label: Service pages
+                name: services
+                widget: object
                 fields:
-                  - { label: "Coaching image", name: "coaching", widget: "image", required: false }
-                  - { label: "Human Design image", name: "human_design", widget: "image", required: false }
-                  - { label: "Reiki image", name: "reiki", widget: "image", required: false }
-              - label: "About page"
-                name: "about"
-                widget: "object"
-                collapsed: true
+                  - label: Coaching page photo
+                    name: coaching
+                    widget: image
+                    required: false
+                    choose_url: false
+                  - label: Human Design page photo
+                    name: human_design
+                    widget: image
+                    required: false
+                    choose_url: false
+                  - label: Reiki page photo
+                    name: reiki
+                    widget: image
+                    required: false
+                    choose_url: false
+              - label: About page
+                name: about
+                widget: object
                 fields:
-                  - { label: "About — main image", name: "main", widget: "image", required: false }
-          # --------------------------------------------------------
-          - label: "⑦ Testimonials (the carousel)"
-            name: "testimonials"
-            widget: "list"
-            collapsed: true
-            label_singular: "Testimonial"
-            summary: "{{fields.initials}} — {{fields.role}}"
-            fields:
-              - { label: "The quote", name: "quote", widget: "text" }
-              - { label: "Initials / name (optional)", name: "initials", widget: "string", required: false, hint: "e.g. M.A. — leave empty to show no name" }
-              - { label: "Who they are", name: "role", widget: "string", hint: "e.g. Coaching & Reiki client" }
+                  - label: Main photo
+                    name: main
+                    widget: image
+                    required: false
+                    choose_url: false

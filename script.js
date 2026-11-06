@@ -167,11 +167,17 @@
   }
 
   /* ---------- CMS content injection ----------
-     Reads content/site.json (edited via Decap CMS at /admin) and
-     overrides the inline defaults. Fully readable without JS. */
+     Reads the content files in content/ (one per admin-panel section, edited
+     via Decap CMS at /admin) and overrides the inline defaults. A file that
+     fails to load just leaves its part of the page as written in the HTML. */
+  var CMS_FILES = ['contact', 'home', 'services', 'about', 'testimonials', 'cta', 'photos'];
   function applyCMS() {
-    return fetch('content/site.json', { cache: 'no-store' })
-      .then(function (res) { if (!res.ok) throw 0; return res.json(); })
+    return Promise.all(CMS_FILES.map(function (name) {
+      return fetch('/content/' + name + '.json', { cache: 'no-store' })
+        .then(function (res) { return res.ok ? res.json() : {}; })
+        .catch(function () { return {}; });
+    }))
+      .then(function (parts) { return Object.assign.apply(Object, [{}].concat(parts)); })
       .then(function (data) {
         var get = function (path) { return path.split('.').reduce(function (o, k) { return (o == null ? undefined : o[k]); }, data); };
         var esc = function (s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); };
