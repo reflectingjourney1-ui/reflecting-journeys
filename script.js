@@ -72,7 +72,7 @@
       entries.forEach(function (entry) {
         if (entry.isIntersecting) { entry.target.classList.add('is-in'); obs.unobserve(entry.target); }
       });
-    }, { rootMargin: '0px 0px -6% 0px', threshold: 0.08 });
+    }, { rootMargin: '0px 0px 12% 0px', threshold: 0.01 });
     revealEls.forEach(function (el) { io.observe(el); });
     // Hard failsafe: nothing may stay hidden.
     window.setTimeout(revealAll, 2200);
@@ -182,11 +182,19 @@
         var get = function (path) { return path.split('.').reduce(function (o, k) { return (o == null ? undefined : o[k]); }, data); };
         var esc = function (s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); };
         var md = function (s) { return esc(s).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\*(.+?)\*/g, '<em>$1</em>').replace(/\b(\d+-\w+)/g, '<span class="nowrap">$1</span>').replace(/ —(?=\s)/g, '&nbsp;—').replace(/\n/g, '<br>'); };
+        // Replace an element's HTML only when the content really differs, so the
+        // browser doesn't repaint text that is already correct.
+        var tpl = doc.createElement('template');
+        var squash = function (h) { return h.replace(/\s+/g, ' ').trim(); };
+        var setHTML = function (el, html) {
+          tpl.innerHTML = html;
+          if (squash(tpl.innerHTML) !== squash(el.innerHTML)) el.innerHTML = html;
+        };
         var c = data.contact || {};
 
         doc.querySelectorAll('[data-cms]').forEach(function (el) {
           var v = get(el.getAttribute('data-cms'));
-          if (v != null) el.innerHTML = md(v);
+          if (v != null) setHTML(el, md(v));
         });
 
         // Editable images: [data-cms-img="images.home.hero"] -> sets the <img> src
@@ -201,7 +209,7 @@
         if (fl[1] && c.whatsapp_url) { fl[1].href = c.whatsapp_url; fl[1].textContent = 'WhatsApp · ' + c.whatsapp_display; }
         if (fl[2] && c.instagram_url) { fl[2].href = c.instagram_url; fl[2].textContent = 'Instagram · ' + c.instagram_handle; }
         var fTag = doc.querySelector('.site-footer__tag');
-        if (fTag && data.footer && data.footer.tagline) fTag.innerHTML = md(data.footer.tagline);
+        if (fTag && data.footer && data.footer.tagline) setHTML(fTag, md(data.footer.tagline));
         var fLoc = doc.querySelector('.site-footer__loc');
         if (fLoc && c.location) fLoc.textContent = c.location;
 
@@ -217,7 +225,7 @@
 
         if (data.cta) {
           var t = doc.querySelector('.booking-cta__title'); if (t && data.cta.title) t.textContent = data.cta.title;
-          var l = doc.querySelector('.booking-cta__lead'); if (l && data.cta.lead) l.innerHTML = md(data.cta.lead);
+          var l = doc.querySelector('.booking-cta__lead'); if (l && data.cta.lead) setHTML(l, md(data.cta.lead));
           var b = doc.querySelector('.booking-cta__actions .btn'); if (b && data.cta.button) b.textContent = data.cta.button;
         }
 

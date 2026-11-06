@@ -57,10 +57,12 @@
   <link rel="manifest" href="/site.webmanifest" />
   <meta name="theme-color" content="#3a4a33" />
 
-  <!-- Fonts: Poppins (body) + Bodoni Moda (elegant display fallback for Gamgote) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,400;1,6..96,500&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <!-- Fonts: self-hosted in /fonts (see top of styles.css) -->
+  <link rel="preload" as="image" href="/images/uploads/laura-trees-full.webp" imagesrcset="/images/resp/laura-trees-full-480.webp 480w, /images/resp/laura-trees-full-720.webp 720w, /images/resp/laura-trees-full-851.webp 851w" imagesizes="(max-width: 800px) 92vw, 460px" fetchpriority="high" />
+  <link rel="preload" href="/fonts/bodonimoda-normal-400-600-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/poppins-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <!-- Faster page changes: start loading a page when its link is hovered/pressed (Chrome, Edge). -->
+  <script type="speculationrules">{"prefetch":[{"where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":"/admin/*"}}]},"eagerness":"moderate"}]}</script>
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="brand.css" />
 </head>
@@ -130,7 +132,7 @@
         </div>
       </div>
       <figure class="hero__figure">
-        <img src="images/uploads/laura-trees-full.webp" srcset="images/resp/laura-trees-full-480.webp 480w, images/resp/laura-trees-full-720.webp 720w, images/resp/laura-trees-full-851.webp 851w" sizes="(max-width: 800px) 92vw, 460px" data-cms-img="images.home.hero" alt="Laura Brambilla sitting outdoors under the trees" fetchpriority="high" decoding="async" style="object-position: 50% 24%" />
+        <img src="images/uploads/laura-trees-full.webp" srcset="images/resp/laura-trees-full-480.webp 480w, images/resp/laura-trees-full-720.webp 720w, images/resp/laura-trees-full-851.webp 851w" sizes="(max-width: 800px) 92vw, 460px" data-cms-img="images.home.hero" alt="Laura Brambilla sitting outdoors under the trees" fetchpriority="high" style="object-position: 50% 24%" />
       </figure>
     </div>
   </section>
