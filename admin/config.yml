@@ -85,7 +85,7 @@ collections:
               - label: Short line under the big title
                 name: hero_lead
                 widget: string
-                hint: The gold line just above the button, e.g. I See You
+                hint: 'The gold line above the button. Keep the stars around it, like *I See You*, so it stays in gold italics.'
               - label: Meet Laura — first paragraph
                 name: meet_p1
                 widget: text
