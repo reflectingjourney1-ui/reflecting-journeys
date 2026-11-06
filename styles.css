@@ -1809,3 +1809,6 @@ a.contact-list__value:hover { color: var(--accent-warm); }
 @media (prefers-reduced-motion: reduce) {
   @view-transition { navigation: none; }
 }
+
+/* Contact form: "(optional)" hint next to a label */
+.field__optional { font-weight: 400; letter-spacing: 0; color: var(--text-mute); }

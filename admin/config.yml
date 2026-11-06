@@ -46,11 +46,11 @@ collections:
               - label: Instagram name (as people will see it)
                 name: instagram_handle
                 widget: string
-                hint: 'With the @, for example: @reflecting_journeyss'
+                hint: 'With the @, for example: @reflecting_journeys'
               - label: Instagram link
                 name: instagram_url
                 widget: string
-                hint: 'For example: https://instagram.com/reflecting_journeyss'
+                hint: 'For example: https://instagram.com/reflecting_journeys'
               - label: Location
                 name: location
                 widget: string
