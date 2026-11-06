@@ -1745,3 +1745,12 @@ a.contact-list__value:hover { color: var(--accent-warm); }
   line-height: 1.75; color: var(--text-on-dark-soft);
 }
 .testimonial--long .testimonial__by { align-items: flex-start; }
+
+/* Services dropdown: an invisible bridge over the gap between "Services" and the
+   menu, so moving the mouse down into the menu doesn't close it. */
+@media (min-width: 921px) {
+  .nav__sub::before {
+    content: ""; position: absolute; left: 0; right: 0;
+    bottom: 100%; height: calc(0.6rem + 14px);
+  }
+}
