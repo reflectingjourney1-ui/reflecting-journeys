@@ -2,4 +2,4 @@ User-agent: *
 Disallow: /admin/
 Disallow: /thanks
 
-Sitemap: https://reflectingjourneys.netlify.app/sitemap.xml
+Sitemap: https://reflecting-journeys.netlify.app/sitemap.xml

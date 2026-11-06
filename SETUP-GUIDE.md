@@ -23,7 +23,7 @@ Netlify's built-in GitHub login. One-time setup:
 
 1. In GitHub → **Settings → Developer settings → OAuth Apps → New OAuth App**:
    - Application name: `Reflecting Journeys admin`
-   - Homepage URL: the site address, e.g. `https://reflectingjourneys.netlify.app`
+   - Homepage URL: the site address, e.g. `https://reflecting-journeys.netlify.app`
    - Authorization callback URL: `https://api.netlify.com/auth/done`
    - Create it, then **Generate a new client secret**.
 2. In Netlify → the site → **Project configuration → Security → OAuth →
