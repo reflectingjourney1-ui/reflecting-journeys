@@ -12,9 +12,10 @@ Running cost: **$0**. The only paid item is the domain name.
   lives in `content/site.json`. The admin panel edits that file; the pages
   read it when they load.
 - **Photos uploaded in the admin panel** go to `images/uploads/`.
-- **Contact form** submissions are collected by Netlify Forms
-  (free plan: 100 per month) and emailed to the address set in
-  Netlify → Forms → Form notifications.
+- **Contact form** messages are sent by **Web3Forms** (free) straight to
+  reflectingjourney1@gmail.com. The form's access key is in ;
+  manage it at web3forms.com (log in with that Gmail). If the site moves to a
+  new domain, add it in the form's settings there.
 
 ## Admin panel login (GitHub)
 
@@ -36,8 +37,6 @@ Then: open `https://SITE-ADDRESS/admin/` → **Login with GitHub** → edit →
 ## Netlify settings this site relies on
 
 - **Build settings:** build command empty, publish directory `/`.
-- **Forms:** form detection **enabled** (Project configuration → Forms).
-- **Form notifications:** an email notification to the owner's address.
 - Pretty URLs are on by default (`/about` serves `about.html`).
 
 ## Changing the site address (e.g. adding the custom domain)

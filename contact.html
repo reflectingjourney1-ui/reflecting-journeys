@@ -127,10 +127,14 @@
         </div>
       </div>
 
-      <form class="contact-form" name="contact" method="POST" action="/thanks.html" data-netlify="true" netlify-honeypot="bot-field" data-reveal data-reveal-delay="0.1s">
-        <input type="hidden" name="form-name" value="contact" />
+      <form class="contact-form" name="contact" method="POST" action="https://api.web3forms.com/submit" data-contact-form data-reveal data-reveal-delay="0.1s">
+        <!-- Web3Forms emails each message to the site owner. The access key is public by design. -->
+        <input type="hidden" name="access_key" value="61543784-7c85-43c7-afdb-397ba13206c2" />
+        <input type="hidden" name="subject" value="New message from the Reflecting Journeys website" />
+        <input type="hidden" name="from_name" value="Reflecting Journeys website" />
+        <input type="hidden" name="redirect" value="https://reflecting-journeys.netlify.app/thanks" data-redirect />
         <p class="visually-hidden" aria-hidden="true">
-          <label>Don't fill this out if you're human: <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
+          <label>Don't fill this out if you're human: <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" /></label>
         </p>
         <div class="field">
           <label for="c-name">Name</label>
